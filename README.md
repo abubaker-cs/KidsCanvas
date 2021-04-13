@@ -1,2 +1,2 @@
 # Kids Canvas
-Starting prepairng project's structure for 4th project.
+Starting preparing project's structure for 4th project.
