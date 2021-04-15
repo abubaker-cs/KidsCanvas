@@ -47,6 +47,10 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     // onSizeChanged() - It exists in the view class, and our DrawingView is based on it
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
+        mCanvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+
+        // Used Bitmap for the Canvas
+        canvas = Canvas(mCanvasBitmap!!)
     }
 
     // For internal user only
