@@ -49,6 +49,9 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     // A variable to hold a color of the stroke.
     private var color = Color.BLACK
 
+    // We want the lines to stay on the screen
+    private var mPaths = ArrayList<CustomPath>()
+
     /**
      * A variable for canvas which will be initialized later and used.
      *
@@ -120,6 +123,18 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
          */
         canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
 
+        /**
+         * It will preserve lines on the screen
+         */
+        for (path in mPaths) {
+            mDrawPaint!!.strokeWidth = path.brushThickness
+            mDrawPaint!!.color = path.color
+            canvas.drawPath(path, mDrawPaint!!)
+        }
+
+        /**
+         *
+         */
         if (!mDrawPath!!.isEmpty) {
 
             // Set Brush size (how thick the PAINT should be)
@@ -165,6 +180,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
             }
 
             MotionEvent.ACTION_UP -> {
+                mPaths.add(mDrawPath!!)
                 mDrawPath = CustomPath(color, mBrushSize)
             }
             else -> return false
