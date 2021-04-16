@@ -53,6 +53,29 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         canvas = Canvas(mCanvasBitmap!!)
     }
 
+    /**
+     * What should happen when we draw
+     * Note: Change Canvas to Canvas? if fails
+     */
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+
+        // Start from 0,0 axis and draw on mCanvasBitmap
+        canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
+
+        if (!mDrawPath!!.isEmpty) {
+
+            // Set Brush size
+            mDrawPaint!!.strokeWidth = mDrawPath!!.brushThickness
+
+            // Set Color of custom path
+            mDrawPaint!!.color = mDrawPath!!.color
+
+            // Draw our path
+            canvas.drawPath(mDrawPath!!, mDrawPaint!!)
+        }
+    }
+
     // For internal user only
     internal inner class CustomPath(var color: Int, var brushThickness: Float) : Path() {
 
