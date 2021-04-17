@@ -3,6 +3,7 @@ package org.abubaker.kidscanvas
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 
@@ -84,9 +85,6 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         // Canvas
         // Paint flag that enables dithering when blitting.
         mCanvasPaint = Paint(Paint.DITHER_FLAG)
-
-        // Brush Size // Here the default or we can initial brush/ stroke size is defined.
-        mBrushSize = 20.toFloat()
 
     }
 
@@ -188,6 +186,20 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
 
         invalidate()
         return true
+    }
+
+    /**
+     * Brush Size
+     */
+    fun setSizeForBrush(newSize: Float) {
+        // It will make sure that the size will remain same on different screens
+        mBrushSize = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            newSize,
+            resources.displayMetrics
+        )
+
+        mDrawPaint!!.strokeWidth = mBrushSize
     }
 
     // For internal user only

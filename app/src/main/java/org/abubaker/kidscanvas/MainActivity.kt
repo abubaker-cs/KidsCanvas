@@ -15,7 +15,9 @@ class MainActivity : AppCompatActivity() {
 
         // setContentView(R.layout.activity_main)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        
 
+        // Set Default Brush Size to 20dp
+        // Brush Size // Here the default or we can initial brush/ stroke size is defined.
+        binding.drawingView.setSizeForBrush(20.toFloat())
     }
 }
