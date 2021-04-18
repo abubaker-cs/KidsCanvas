@@ -63,14 +63,12 @@ class MainActivity : AppCompatActivity() {
         bindingDialogBrushSize.ibSmallBrush.setOnClickListener {
             binding.drawingView.setSizeForBrush(10F)
             brushDialog.dismiss()
-
         }
 
         // Size: Medium 20
         bindingDialogBrushSize.ibMediumBrush.setOnClickListener {
             binding.drawingView.setSizeForBrush(20F)
             brushDialog.dismiss()
-
         }
 
         // Size: Large 30
