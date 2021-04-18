@@ -29,16 +29,26 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     private fun showBrushSizeChooserDialog() {
+
+        dialogs = DataBindingUtil.setContentView(this, R.layout.dialog_brush_size)
+
         val brushDialog = Dialog(this)
+
         brushDialog.setContentView(R.layout.dialog_brush_size)
+
         brushDialog.setTitle("Brush size: ")
 
+
         val smallBtn = dialogs.ibSmallBrush
+
         smallBtn.setOnClickListener {
             binding.drawingView.setSizeForBrush(10.toFloat())
             brushDialog.dismiss()
         }
+
+        brushDialog.show()
 
     }
 }
