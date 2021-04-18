@@ -120,12 +120,7 @@ class MainActivity : AppCompatActivity() {
             imageButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pallet_pressed))
 
             // Normal State
-            mImageButtonCurrentPaint!!.setImageDrawable(
-                ContextCompat.getDrawable(
-                    this,
-                    R.drawable.pallet_normal
-                )
-            )
+            mImageButtonCurrentPaint!!.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pallet_normal))
 
             // Update View: Current view is updated with selected view in the form of ImageButton.
             mImageButtonCurrentPaint = view

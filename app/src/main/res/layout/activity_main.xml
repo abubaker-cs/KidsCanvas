@@ -95,14 +95,23 @@
                 android:src="@drawable/pallet_normal"
                 android:tag="@color/lollipop" />
 
-            <!-- Color: Random (Purple) -->
+            <!-- Color: Purple -->
             <ImageButton
                 style="@style/colorSelector_dim"
-                android:background="@color/random"
-                android:contentDescription="@string/random_color"
+                android:background="@color/purple"
+                android:contentDescription="@string/purple_color"
                 android:onClick="paintClicked"
                 android:src="@drawable/pallet_normal"
-                android:tag="@color/random" />
+                android:tag="@color/purple" />
+
+            <!-- Color: White -->
+            <ImageButton
+                style="@style/colorSelector_dim"
+                android:background="@color/white"
+                android:contentDescription="@string/white_color"
+                android:onClick="paintClicked"
+                android:src="@drawable/pallet_normal"
+                android:tag="@color/white" />
 
         </LinearLayout>
 

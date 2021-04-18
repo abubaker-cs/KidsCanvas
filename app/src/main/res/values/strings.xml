@@ -11,5 +11,6 @@
     <string name="blue_color">Blue Color</string>
     <string name="yellow_color">Yellow Color</string>
     <string name="lollipop_color">Lollipop Color</string>
-    <string name="random_color">Random Color</string>
+    <string name="purple_color">Purple Color</string>
+    <string name="white_color">White Color</string>
 </resources>
