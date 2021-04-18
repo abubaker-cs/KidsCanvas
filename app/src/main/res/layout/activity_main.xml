@@ -31,82 +31,74 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/drawing_view">
 
+            <!-- Color: Skin -->
             <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="2dp"
+                style="@style/colorSelector_dim"
                 android:background="@color/skin"
-                android:contentDescription="image"
+                android:contentDescription="@string/skin_color"
                 android:onClick="paintClicked"
                 android:src="@drawable/pallet_normal"
                 android:tag="@color/skin" />
 
+            <!-- Color: Black -->
             <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="2dp"
+                style="@style/colorSelector_dim"
                 android:background="@color/black"
-                android:contentDescription="image"
+                android:contentDescription="@string/black_color"
                 android:onClick="paintClicked"
                 android:src="@drawable/pallet_normal"
                 android:tag="@color/black" />
 
+            <!-- Color: Red -->
             <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="2dp"
+                style="@style/colorSelector_dim"
                 android:background="@color/red"
-                android:contentDescription="image"
+                android:contentDescription="@string/red_color"
                 android:onClick="paintClicked"
                 android:src="@drawable/pallet_normal"
                 android:tag="@color/red" />
 
+            <!-- Color: Green -->
             <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="2dp"
+                style="@style/colorSelector_dim"
                 android:background="@color/green"
-                android:contentDescription="image"
+                android:contentDescription="@string/green_color"
                 android:onClick="paintClicked"
                 android:src="@drawable/pallet_normal"
                 android:tag="@color/green" />
 
+            <!-- Color: Blue -->
             <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="2dp"
+                style="@style/colorSelector_dim"
                 android:background="@color/blue"
-                android:contentDescription="image"
+                android:contentDescription="@string/blue_color"
                 android:onClick="paintClicked"
                 android:src="@drawable/pallet_normal"
                 android:tag="@color/blue" />
 
+            <!-- Color: Yellow -->
             <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="2dp"
+                style="@style/colorSelector_dim"
                 android:background="@color/yellow"
-                android:contentDescription="image"
+                android:contentDescription="@string/yellow_color"
                 android:onClick="paintClicked"
                 android:src="@drawable/pallet_normal"
                 android:tag="@color/yellow" />
 
+            <!-- Color: Lollipop -->
             <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="2dp"
+                style="@style/colorSelector_dim"
                 android:background="@color/lollipop"
-                android:contentDescription="image"
+                android:contentDescription="@string/lollipop_color"
                 android:onClick="paintClicked"
                 android:src="@drawable/pallet_normal"
                 android:tag="@color/lollipop" />
 
+            <!-- Color: Random -->
             <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="2dp"
+                style="@style/colorSelector_dim"
                 android:background="@color/random"
-                android:contentDescription="image"
+                android:contentDescription="@string/random_color"
                 android:onClick="paintClicked"
                 android:src="@drawable/pallet_normal"
                 android:tag="@color/random" />
