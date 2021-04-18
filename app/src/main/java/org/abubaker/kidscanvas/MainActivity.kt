@@ -55,6 +55,9 @@ class MainActivity : AppCompatActivity() {
         //
         mImageButtonCurrentPaint = binding.llPaintColors[1] as ImageButton
 
+        // Select and make the image visible
+        mImageButtonCurrentPaint!!.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pallet_pressed))
+
 
         /**
          * Click Listener: Brush Icon
