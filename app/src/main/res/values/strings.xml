@@ -3,4 +3,5 @@
     <string name="image_small">image_small</string>
     <string name="image_medium">image_medium</string>
     <string name="image_large">image_large</string>
+    <string name="ib_brush_desc">brush image</string>
 </resources>
