@@ -59,25 +59,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun showBrushSizeChooserDialog() {
 
-        // Small
+        // Size: Small 10
         bindingDialogBrushSize.ibSmallBrush.setOnClickListener {
             binding.drawingView.setSizeForBrush(10F)
             brushDialog.dismiss()
 
         }
 
-        // Medium
+        // Size: Medium 20
         bindingDialogBrushSize.ibMediumBrush.setOnClickListener {
             binding.drawingView.setSizeForBrush(20F)
             brushDialog.dismiss()
 
         }
 
-        // Large
+        // Size: Large 30
         bindingDialogBrushSize.ibLargeBrush.setOnClickListener {
             binding.drawingView.setSizeForBrush(30F)
             brushDialog.dismiss()
-
         }
 
         // Apply changes with new configuration
