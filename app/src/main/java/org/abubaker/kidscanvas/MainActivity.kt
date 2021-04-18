@@ -17,27 +17,39 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // setContentView(R.layout.activity_main)
-        // binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        // bindingDialogBrushSize = DialogBrushSizeBinding.inflate(layoutInflater )
 
-
+        /**
+         * Inflate XML: activity_main
+         */
         binding = ActivityMainBinding.inflate(layoutInflater)
         var view = binding.root
         setContentView(view)
 
+
+        /**
+         * Inflate XML: dialog_brush_size
+         */
         bindingDialogBrushSize = DialogBrushSizeBinding.inflate(layoutInflater)
-        brushDialog = Dialog(this)
         view = bindingDialogBrushSize.root
+        brushDialog = Dialog(this)
         brushDialog.setContentView(view)
 
-        // Define Title
+
+        /**
+         * Dialog: Define Title
+         */
         brushDialog.setTitle("Brush size: ")
 
-        // Set Default Brush Size to 20dp
-        // Brush Size // Here the default or we can initial brush/ stroke size is defined.
+
+        /**
+         * Default size for the Brush/Stroke: 20
+         */
         binding.drawingView.setSizeForBrush(20F)
 
+
+        /**
+         * Click Listener: Brush Icon
+         */
         binding.ibBrush.setOnClickListener {
             showBrushSizeChooserDialog()
         }
@@ -46,7 +58,6 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun showBrushSizeChooserDialog() {
-
 
         // Small
         bindingDialogBrushSize.ibSmallBrush.setOnClickListener {
@@ -71,24 +82,6 @@ class MainActivity : AppCompatActivity() {
 
         // Apply changes with new configuration
         brushDialog.show()
-
-        // dialogs = DataBindingUtil.setContentView(this, R.layout.dialog_brush_size)
-
-        // val brushDialog = Dialog(this)
-
-        // brushDialog.setContentView(R.layout.dialog_brush_size)
-
-        // brushDialog.setTitle("Brush size: ")
-
-
-        // val smallBtn = dialogs.ibSmallBrush
-
-        // smallBtn.setOnClickListener {
-        //     binding.drawingView.setSizeForBrush(10.toFloat())
-        //     brushDialog.dismiss()
-        // }
-
-        // brushDialog.show()
 
     }
 }
