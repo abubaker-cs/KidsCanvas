@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- layer-list allows to add multiple items -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Normal State: Gray -->
     <item>
+
         <shape android:shape="rectangle">
             <stroke
                 android:width="2dp"
@@ -13,8 +16,11 @@
                 android:left="0dp"
                 android:right="0dp"
                 android:top="0dp" />
+
         </shape>
+
     </item>
+
     <item>
         <shape>
             <stroke
