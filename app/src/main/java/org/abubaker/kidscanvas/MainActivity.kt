@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         // binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         // bindingDialogBrushSize = DialogBrushSizeBinding.inflate(layoutInflater)
 
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         var view = binding.root
         setContentView(view)
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         brushDialog = Dialog(this)
         view = bindingDialogBrushSize.root
         brushDialog.setContentView(view)
+
+        // Define Title
         brushDialog.setTitle("Brush size: ")
 
         // Set Default Brush Size to 20dp
@@ -44,25 +47,29 @@ class MainActivity : AppCompatActivity() {
 
     private fun showBrushSizeChooserDialog() {
 
-        /*Also I would not use showBrushSizeChooserDialog() entirely
-        and transfer these OnClickListeners to some other function
-        that is just called once in onCreate(), because only brushDialog.show()
-        needs to be called multiple times*/
+
+        // Small
         bindingDialogBrushSize.ibSmallBrush.setOnClickListener {
             binding.drawingView.setSizeForBrush(10F)
             brushDialog.dismiss()
 
         }
+
+        // Medium
         bindingDialogBrushSize.ibMediumBrush.setOnClickListener {
             binding.drawingView.setSizeForBrush(20F)
             brushDialog.dismiss()
 
         }
+
+        // Large
         bindingDialogBrushSize.ibLargeBrush.setOnClickListener {
             binding.drawingView.setSizeForBrush(30F)
             brushDialog.dismiss()
 
         }
+
+        // Apply changes with new configuration
         brushDialog.show()
 
         // dialogs = DataBindingUtil.setContentView(this, R.layout.dialog_brush_size)
