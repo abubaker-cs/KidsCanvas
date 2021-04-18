@@ -22,6 +22,11 @@ class MainActivity : AppCompatActivity() {
         // Set Default Brush Size to 20dp
         // Brush Size // Here the default or we can initial brush/ stroke size is defined.
         binding.drawingView.setSizeForBrush(20.toFloat())
+
+        binding.ibBrush.setOnClickListener {
+            showBrushSizeChooserDialog()
+        }
+
     }
 
     private fun showBrushSizeChooserDialog() {
