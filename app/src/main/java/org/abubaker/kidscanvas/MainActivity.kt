@@ -1,12 +1,12 @@
 package org.abubaker.kidscanvas
 
 import android.app.Dialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
+import androidx.core.view.get
 import org.abubaker.kidscanvas.databinding.ActivityMainBinding
 import org.abubaker.kidscanvas.databinding.DialogBrushSizeBinding
 
@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity() {
          * Default size for the Brush/Stroke: 20
          */
         binding.drawingView.setSizeForBrush(20F)
+
+        //
+        mImageButtonCurrentPaint = binding.llPaintColors[1] as ImageButton
 
 
         /**
