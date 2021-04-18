@@ -113,14 +113,13 @@ class MainActivity : AppCompatActivity() {
             val colorTag = imageButton.tag.toString()
 
             // The color is set as per the selected tag here.
-
             binding.drawingView.setColor(colorTag)
-            // drawing_view.setColor(colorTag)
 
+            // Pressed State:
             // Swap the backgrounds for last active and currently active image button.
             imageButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pallet_pressed))
 
-            //
+            // Normal State
             mImageButtonCurrentPaint!!.setImageDrawable(
                 ContextCompat.getDrawable(
                     this,
@@ -128,7 +127,7 @@ class MainActivity : AppCompatActivity() {
                 )
             )
 
-            //Current view is updated with selected view in the form of ImageButton.
+            // Update View: Current view is updated with selected view in the form of ImageButton.
             mImageButtonCurrentPaint = view
         }
     }
