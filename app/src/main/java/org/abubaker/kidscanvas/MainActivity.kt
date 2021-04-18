@@ -56,7 +56,12 @@ class MainActivity : AppCompatActivity() {
         mImageButtonCurrentPaint = binding.llPaintColors[1] as ImageButton
 
         // Select and make the image visible
-        mImageButtonCurrentPaint!!.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pallet_pressed))
+        mImageButtonCurrentPaint!!.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.pallet_pressed
+            )
+        )
 
 
         /**
@@ -67,7 +72,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
     private fun showBrushSizeChooserDialog() {
 
@@ -103,15 +107,20 @@ class MainActivity : AppCompatActivity() {
         if (view !== mImageButtonCurrentPaint) {
             // Update the color
             val imageButton = view as ImageButton
+
             // Here the tag is used for swaping the current color with previous color.
             // The tag stores the selected view
             val colorTag = imageButton.tag.toString()
+
             // The color is set as per the selected tag here.
 
-            // binding.drawingView.color(colorTag)
+            binding.drawingView.setColor(colorTag)
             // drawing_view.setColor(colorTag)
+
             // Swap the backgrounds for last active and currently active image button.
             imageButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pallet_pressed))
+
+            //
             mImageButtonCurrentPaint!!.setImageDrawable(
                 ContextCompat.getDrawable(
                     this,
@@ -123,4 +132,5 @@ class MainActivity : AppCompatActivity() {
             mImageButtonCurrentPaint = view
         }
     }
+
 }

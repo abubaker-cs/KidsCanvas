@@ -202,6 +202,15 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         mDrawPaint!!.strokeWidth = mBrushSize
     }
 
+    /**
+     * Parse the color string, and return the corresponding color-int.
+     * If the string cannot be parsed, throws an IllegalArgumentException exception.
+     */
+    fun setColor(newColor: String) {
+        color = Color.parseColor(newColor)
+        mDrawPaint!!.color = color
+    }
+
     // For internal user only
     // An inner class for custom path with two params as color and stroke size.
     internal inner class CustomPath(var color: Int, var brushThickness: Float) : Path()
