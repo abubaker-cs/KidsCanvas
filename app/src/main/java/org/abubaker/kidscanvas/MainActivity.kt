@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         // setContentView(R.layout.activity_main)
         // binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        // bindingDialogBrushSize = DialogBrushSizeBinding.inflate(layoutInflater)
+        // bindingDialogBrushSize = DialogBrushSizeBinding.inflate(layoutInflater )
 
 
         binding = ActivityMainBinding.inflate(layoutInflater)
