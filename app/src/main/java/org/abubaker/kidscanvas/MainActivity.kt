@@ -173,11 +173,16 @@ class MainActivity : AppCompatActivity() {
             // If user allowed
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(
-                    this,
+                    this@MainActivity,
                     "Permission granted now you can read the storage files",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Oops you just denied the permission",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
