@@ -1,9 +1,13 @@
 package org.abubaker.kidscanvas
 
+import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
+import android.widget.Gallery
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -82,6 +86,10 @@ class MainActivity : AppCompatActivity() {
             // Check if we already have the permission
             if (isReadStorageAllowed()) {
                 // run our code to get the image from the gallery
+                val pickPhotoIntent =
+                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+
+                startActivityForResult(pickPhotoIntent, GALLERY)
 
             } else {
 
@@ -92,6 +100,21 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    /**
+     * ----------------------------------------------------------------------- Result: Gallery
+     */
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+
+        }
+    }
+
+    /**
+     * ----------------------------------------------------------------------- Brush Dialog
+     */
 
     private fun showBrushSizeChooserDialog() {
 
@@ -152,6 +175,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * ----------------------------------------------------------------------- Storage Permission
+     */
+
     private fun requestStoragePermission() {
 
         // Check if permission is required
@@ -205,6 +232,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
     // Helper function
     // Now we can check if the permission was granted
     private fun isReadStorageAllowed(): Boolean {
@@ -217,10 +246,15 @@ class MainActivity : AppCompatActivity() {
         return result == PackageManager.PERMISSION_GRANTED
     }
 
+    /**
+     * -----------------------------------------------------------------------
+     */
+
     // Companion Object to be used with permissions
     // It will store static / constant variables
     companion object {
         private const val STORAGE_PERMISSION_CODE = 1
+        private const val GALLERY = 2
     }
 
 }
