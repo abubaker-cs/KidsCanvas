@@ -1,10 +1,13 @@
 package org.abubaker.kidscanvas
 
 import android.app.Dialog
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import org.abubaker.kidscanvas.databinding.ActivityMainBinding
@@ -120,11 +123,69 @@ class MainActivity : AppCompatActivity() {
             imageButton.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pallet_pressed))
 
             // Normal State
-            mImageButtonCurrentPaint!!.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.pallet_normal))
+            mImageButtonCurrentPaint!!.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.pallet_normal
+                )
+            )
 
             // Update View: Current view is updated with selected view in the form of ImageButton.
             mImageButtonCurrentPaint = view
         }
+    }
+
+    private fun requestStoragePermission() {
+
+        // Check if permission is required
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                arrayOf(
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ).toString()
+            )
+        ) {
+            Toast.makeText(this, "You need permission to add a Background", Toast.LENGTH_SHORT)
+                .show()
+        }
+
+        // Ask for permission (permission code is required when asking for permission)
+        ActivityCompat.requestPermissions(
+            this, arrayOf(
+                android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ), STORAGE_PERMISSION_CODE
+        )
+
+    }
+
+    // What to do when permission is granted
+    // get resultCode and compare it to the Permission Code
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == STORAGE_PERMISSION_CODE) {
+
+            // If user allowed
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(
+                    this,
+                    "Permission granted now you can read the storage files",
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
+        }
+    }
+
+    // Companion Object to be used with permissions
+    // It will store static / constant variables
+    companion object {
+        private const val STORAGE_PERMISSION_CODE = 1
     }
 
 }
