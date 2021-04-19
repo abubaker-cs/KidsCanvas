@@ -118,6 +118,12 @@ class MainActivity : AppCompatActivity() {
                     if (data!!.data != null) {
                         binding.ivBackground.visibility = View.VISIBLE
                         binding.ivBackground.setImageURI(data.data)
+                    } else {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Error in parsing the image or its corrupted",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 } catch (e: Exception) {
