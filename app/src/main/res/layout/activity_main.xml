@@ -8,17 +8,46 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <org.abubaker.kidscanvas.DrawingView
-            android:id="@+id/drawing_view"
+        <FrameLayout
+            android:id="@+id/fl_drawing_view_container"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_marginBottom="80dp"
             android:background="@drawable/background_drawing_view_layout"
+            android:padding="1dp"
             app:layout_constraintBottom_toTopOf="@+id/ll_paint_colors"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- In FrameLayout the component which are
+           added below are in foreground and added above are in Background.-->
+            <ImageView
+                android:id="@+id/iv_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/background_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image" />
+
+            <org.abubaker.kidscanvas.DrawingView
+                android:id="@+id/drawing_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#80FFFFFF" />
+        </FrameLayout>
+
+<!--        <org.abubaker.kidscanvas.DrawingView-->
+<!--            android:id="@+id/drawing_view"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:layout_marginBottom="80dp"-->
+<!--            android:background="@drawable/background_drawing_view_layout"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/ll_paint_colors"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <!-- Color pallet_normal -->
         <LinearLayout
