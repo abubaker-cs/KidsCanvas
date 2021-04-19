@@ -23,13 +23,13 @@
             <!-- Benefit: In FrameLayout the component which are added below are in foreground
                 and added above are in Background.-->
             <!-- Order - Below: Background Image -->
+            <!-- Removed: android:src="@drawable/image"  -->
             <ImageView
                 android:id="@+id/iv_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/background_image"
-                android:scaleType="centerCrop"
-                android:src="@drawable/image" />
+                android:scaleType="centerCrop" />
 
             <!-- Order - Above: Drawing View -->
             <org.abubaker.kidscanvas.DrawingView
