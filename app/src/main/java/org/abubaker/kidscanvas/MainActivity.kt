@@ -74,6 +74,23 @@ class MainActivity : AppCompatActivity() {
             showBrushSizeChooserDialog()
         }
 
+        /**
+         * Check for permission
+         */
+        binding.ibGallery.setOnClickListener {
+
+            // Check if we already have the permission
+            if (isReadStorageAllowed()) {
+                // run our code to get the image from the gallery
+
+            } else {
+
+                // ask for the permission
+                requestStoragePermission()
+
+            }
+        }
+
     }
 
     private fun showBrushSizeChooserDialog() {
@@ -189,6 +206,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Helper function
+    // Now we can check if the permission was granted
     private fun isReadStorageAllowed(): Boolean {
         val result = ContextCompat.checkSelfPermission(
             this,
