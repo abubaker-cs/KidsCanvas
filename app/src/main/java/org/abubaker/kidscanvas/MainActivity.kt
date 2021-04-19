@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import org.abubaker.kidscanvas.databinding.ActivityMainBinding
 import org.abubaker.kidscanvas.databinding.DialogBrushSizeBinding
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -108,7 +109,21 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == GALLERY) {
+                try {
 
+                    // This data has a property "data" which we will check if it is null or not
+                    // if not null, then user has selected something
+                    // URI: data.data has the record of the image's URI
+                    if (data!!.data != null) {
+                        binding.ivBackground.visibility = View.VISIBLE
+                        binding.ivBackground.setImageURI(data.data)
+                    }
+
+                } catch (e: Exception) {
+                    e.printStackTrace() // errors will appear in the log
+                }
+            }
         }
     }
 
@@ -231,7 +246,6 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-
 
 
     // Helper function
