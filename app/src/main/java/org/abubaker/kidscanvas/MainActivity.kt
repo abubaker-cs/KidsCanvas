@@ -324,6 +324,7 @@ class MainActivity : AppCompatActivity() {
      */
     private inner class BitmapAsyncTask(val mBitmap: Bitmap) : AsyncTask<Any, Void, String>() {
 
+        private lateinit var mProgressDialog: Dialog
 
         override fun doInBackground(vararg params: Any?): String {
 
@@ -377,6 +378,12 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
 
+        }
+
+        private fun showProgressDialog() {
+            mProgressDialog = Dialog(this@MainActivity)
+            mProgressDialog.setContentView(R.layout.dialog_custom_progress) // inflate .xml file
+            mProgressDialog.show()
         }
 
     }
