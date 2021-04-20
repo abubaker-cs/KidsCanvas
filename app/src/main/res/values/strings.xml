@@ -16,4 +16,5 @@
     <string name="background_image">Background image</string>
     <string name="ib_gallery">Gallery image</string>
     <string name="undo_image">Undo image</string>
+    <string name="ib_save_desc">Save image</string>
 </resources>
