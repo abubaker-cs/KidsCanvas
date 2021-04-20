@@ -116,7 +116,11 @@ class MainActivity : AppCompatActivity() {
          */
         binding.ibSave.setOnClickListener {
             if (isReadStorageAllowed()) {
+                // We will pass directly the FrameLayout as it contains both View and Image
                 BitmapAsyncTask(getBitmapFromView(binding.flDrawingViewContainer)).execute()
+            } else {
+                // Request permission to have access to the storage
+                requestStoragePermission()
             }
         }
 
