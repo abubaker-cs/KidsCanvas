@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.media.MediaScannerConnection
 import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.MediaStore
@@ -386,6 +387,9 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+
+            // Share the file
+            MediaScannerConnection.scanFile(this@MainActivity, arrayOf(result), null)
 
         }
 
