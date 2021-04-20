@@ -274,20 +274,29 @@ class MainActivity : AppCompatActivity() {
 
     private fun getBitmapFromView(view: View): Bitmap {
 
-        // ARGB_8888 = Defines # of colors and opacity
+        // Take the dimensions, ARGB_8888 = Defines # of colors and opacity
         val returnedBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
 
-        //
+        // prepare the canvas
         val canvas = Canvas(returnedBitmap)
 
         // Background image which we are using
         val bgDrawable = view.background
 
+        //
         if (bgDrawable != null) {
+            // if there is background image then we draw it onto the canvas
             bgDrawable.draw(canvas)
         } else {
+            // if there is no background then we draw white color onto the canvas
             canvas.drawColor(Color.WHITE)
         }
+
+        // final touch
+        // Draw canvas onto the view
+        view.draw(canvas)
+
+        return returnedBitmap
 
     }
 
