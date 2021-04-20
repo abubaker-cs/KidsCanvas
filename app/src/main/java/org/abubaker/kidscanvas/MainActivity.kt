@@ -7,10 +7,10 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
-import android.widget.Gallery
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +19,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import org.abubaker.kidscanvas.databinding.ActivityMainBinding
 import org.abubaker.kidscanvas.databinding.DialogBrushSizeBinding
-import java.lang.Exception
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 
 class MainActivity : AppCompatActivity() {
 
@@ -296,7 +298,55 @@ class MainActivity : AppCompatActivity() {
         // Draw canvas onto the view
         view.draw(canvas)
 
+        // return final image (bitmap)
         return returnedBitmap
+
+    }
+
+    /**
+     * ----------------------------------------------------------------------- AsyncTask
+     */
+    private inner class BitmapAsyncTask(val mBitmap: Bitmap) : AsyncTask<Any, Void, String>() {
+
+
+        override fun doInBackground(vararg params: Any?): String {
+
+            var result = ""
+
+            if (mBitmap != null) {
+                try {
+
+                    val bytes = ByteArrayOutputStream()
+                    mBitmap.compress(Bitmap.CompressFormat.PNG, 90, bytes)
+
+                    // Retrieve and save file from the stream
+                    val f =
+                        File(
+                            externalCacheDir!!.absoluteFile.toString()
+                                    + File.separator + "KidsDrawingApp_"
+                                    + System.currentTimeMillis() / 1000 + ".png"
+                        )
+
+                    val fos = FileOutputStream(f)
+                    fos.write(bytes.toByteArray())
+                    fos.close()
+
+
+                } catch (e: Exception) {
+                    result = ""
+                    e.printStackTrace()
+                }
+            }
+
+            return result
+
+
+        }
+
+        // It will inform the user that everything has been done
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+        }
 
     }
 
