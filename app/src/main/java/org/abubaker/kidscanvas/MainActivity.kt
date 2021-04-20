@@ -4,6 +4,9 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -267,6 +270,25 @@ class MainActivity : AppCompatActivity() {
 
         // return true of true, else return false
         return result == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun getBitmapFromView(view: View): Bitmap {
+
+        // ARGB_8888 = Defines # of colors and opacity
+        val returnedBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+
+        //
+        val canvas = Canvas(returnedBitmap)
+
+        // Background image which we are using
+        val bgDrawable = view.background
+
+        if (bgDrawable != null) {
+            bgDrawable.draw(canvas)
+        } else {
+            canvas.drawColor(Color.WHITE)
+        }
+
     }
 
     /**
