@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
 
         /**
-         * Click Listener: Brush Icon
+         * Button: Brush
          */
         binding.ibBrush.setOnClickListener {
             showBrushSizeChooserDialog()
@@ -104,8 +104,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        /**
+         * Button: Undo
+         */
         binding.ibUndo.setOnClickListener {
             binding.drawingView.onClickUndo()
+        }
+
+        /**
+         * Button: Save
+         */
+        binding.ibSave.setOnClickListener {
+            if (isReadStorageAllowed()) {
+                BitmapAsyncTask(getBitmapFromView(binding.flDrawingViewContainer)).execute()
+            }
         }
 
     }
@@ -346,6 +358,21 @@ class MainActivity : AppCompatActivity() {
         // It will inform the user that everything has been done
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
+
+            if (!result!!.isEmpty()) {
+                Toast.makeText(
+                    this@MainActivity,
+                    "File saved successfully :$result",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Something went wrong while saving the file.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
         }
 
     }
