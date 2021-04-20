@@ -53,6 +53,9 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     // We want the lines to stay on the screen
     private var mPaths = ArrayList<CustomPath>()
 
+    // For undo
+    private var mUndoPaths = ArrayList<CustomPath>()
+
     /**
      * A variable for canvas which will be initialized later and used.
      *
@@ -66,6 +69,16 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     //
     init {
         setUpDrawing()
+    }
+
+    /**
+     * Undo function
+     */
+    fun onClickUndo() {
+        if (mPaths.size > 0) {
+            mUndoPaths.add(mPaths.removeAt(mPaths.size - 1))
+            invalidate() // it will redraw (onDraw will be called)
+        }
     }
 
     /**
