@@ -388,8 +388,25 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
 
-            // Share the file
-            MediaScannerConnection.scanFile(this@MainActivity, arrayOf(result), null)
+            /**
+             * Share the file
+             */
+            MediaScannerConnection.scanFile(this@MainActivity, arrayOf(result), null) { path, uri ->
+
+                val shareIntent = Intent()
+
+                shareIntent.action = Intent.ACTION_SEND
+                shareIntent.putExtra(Intent.EXTRA_STREAM, uri)
+
+                shareIntent.type = "image/png"
+
+                startActivity(
+                    Intent.createChooser(
+                        shareIntent, "Share"
+                    )
+                )
+
+            }
 
         }
 
