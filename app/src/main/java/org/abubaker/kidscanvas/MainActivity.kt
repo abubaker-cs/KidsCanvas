@@ -330,7 +330,7 @@ class MainActivity : AppCompatActivity() {
                     val fos = FileOutputStream(f)
                     fos.write(bytes.toByteArray())
                     fos.close()
-
+                    result = f.absolutePath
 
                 } catch (e: Exception) {
                     result = ""
