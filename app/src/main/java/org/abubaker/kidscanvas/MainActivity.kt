@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity() {
             showBrushSizeChooserDialog()
         }
 
+
         /**
          * Check for permission
          */
@@ -104,12 +105,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
         /**
          * Button: Undo
          */
         binding.ibUndo.setOnClickListener {
             binding.drawingView.onClickUndo()
         }
+
 
         /**
          * Button: Save
@@ -326,6 +329,11 @@ class MainActivity : AppCompatActivity() {
 
         private lateinit var mProgressDialog: Dialog
 
+        override fun onPreExecute() {
+            super.onPreExecute()
+            showProgressDialog()
+        }
+
         override fun doInBackground(vararg params: Any?): String {
 
             var result = ""
@@ -357,12 +365,13 @@ class MainActivity : AppCompatActivity() {
 
             return result
 
-
         }
 
         // It will inform the user that everything has been done
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
+
+            cancelProgressDialog()
 
             if (!result!!.isEmpty()) {
                 Toast.makeText(
@@ -380,10 +389,18 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        /**
+         * Progress Dialog: Actions
+         */
+
         private fun showProgressDialog() {
             mProgressDialog = Dialog(this@MainActivity)
             mProgressDialog.setContentView(R.layout.dialog_custom_progress) // inflate .xml file
             mProgressDialog.show()
+        }
+
+        private fun cancelProgressDialog() {
+            mProgressDialog.dismiss()
         }
 
     }
